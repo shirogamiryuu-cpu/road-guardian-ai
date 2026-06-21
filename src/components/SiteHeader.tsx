@@ -2,13 +2,13 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import logo from "@/assets/roadshield-logo.png";
 import { cn } from "@/lib/utils";
 
-const NAV = [
+const NAV: { to: string; label: string; end?: boolean }[] = [
   { to: "/", label: "Command", end: true },
   { to: "/sos", label: "RoadSOS" },
   { to: "/legal", label: "DriveLegal" },
   { to: "/watch", label: "RoadWatch" },
   { to: "/about", label: "About" },
-] as const;
+];
 
 export function SiteHeader() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
