@@ -14,7 +14,42 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      road_complaints: {
+        Row: {
+          authority: string | null
+          created_at: string
+          description: string
+          id: string
+          issue_type: string
+          location_lat: number
+          location_lng: number
+          road_name: string
+          status: string
+        }
+        Insert: {
+          authority?: string | null
+          created_at?: string
+          description: string
+          id?: string
+          issue_type: string
+          location_lat: number
+          location_lng: number
+          road_name: string
+          status?: string
+        }
+        Update: {
+          authority?: string | null
+          created_at?: string
+          description?: string
+          id?: string
+          issue_type?: string
+          location_lat?: number
+          location_lng?: number
+          road_name?: string
+          status?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
