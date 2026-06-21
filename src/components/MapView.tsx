@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import L from "leaflet";
+import type * as LType from "leaflet";
 
 export type Poi = {
   id: string;
@@ -19,63 +19,72 @@ const KIND_ICON: Record<Poi["kind"], string> = {
   fire_station: "🚒",
 };
 
-export function MapView({
-  center,
-  userLocation,
-  pois,
-  onMapClick,
-  selectedRoad,
-  className,
-}: {
+type Props = {
   center: [number, number];
   userLocation?: [number, number] | null;
   pois?: Poi[];
   onMapClick?: (lat: number, lng: number) => void;
   selectedRoad?: { lat: number; lng: number; name: string } | null;
   className?: string;
-}) {
+};
+
+export function MapView(props: Props) {
   const mapEl = useRef<HTMLDivElement>(null);
-  const mapRef = useRef<L.Map | null>(null);
-  const layerRef = useRef<L.LayerGroup | null>(null);
-  const userMarkerRef = useRef<L.Marker | null>(null);
+  const mapRef = useRef<LType.Map | null>(null);
+  const layerRef = useRef<LType.LayerGroup | null>(null);
+  const userMarkerRef = useRef<LType.Marker | null>(null);
+  const LRef = useRef<typeof LType | null>(null);
+  const readyRef = useRef(false);
 
-  // init map once
+  const { center, userLocation, pois, onMapClick, selectedRoad, className } = props;
+
+  // dynamic import + init
   useEffect(() => {
-    if (!mapEl.current || mapRef.current) return;
-    const map = L.map(mapEl.current, {
-      center,
-      zoom: 13,
-      zoomControl: true,
-      attributionControl: true,
-    });
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      maxZoom: 19,
-      attribution: '&copy; OpenStreetMap contributors',
-    }).addTo(map);
-    layerRef.current = L.layerGroup().addTo(map);
-    mapRef.current = map;
+    let cancelled = false;
+    (async () => {
+      const mod = await import("leaflet");
+      const L = (mod.default ?? mod) as typeof LType;
+      if (cancelled || !mapEl.current || mapRef.current) return;
+      LRef.current = L;
+      const map = L.map(mapEl.current, {
+        center,
+        zoom: 13,
+        zoomControl: true,
+        attributionControl: true,
+      });
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution: "&copy; OpenStreetMap contributors",
+      }).addTo(map);
+      layerRef.current = L.layerGroup().addTo(map);
+      mapRef.current = map;
+      readyRef.current = true;
 
-    if (onMapClick) {
-      map.on("click", (e: L.LeafletMouseEvent) => onMapClick(e.latlng.lat, e.latlng.lng));
-    }
+      if (onMapClick) {
+        map.on("click", (e: LType.LeafletMouseEvent) => onMapClick(e.latlng.lat, e.latlng.lng));
+      }
 
+      // initial draw
+      drawUser();
+      drawPois();
+    })();
     return () => {
-      map.remove();
+      cancelled = true;
+      mapRef.current?.remove();
       mapRef.current = null;
+      readyRef.current = false;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // recenter when center prop changes
+  // recenter
   useEffect(() => {
-    if (mapRef.current && center) {
-      mapRef.current.setView(center, mapRef.current.getZoom());
-    }
+    if (mapRef.current && center) mapRef.current.setView(center, mapRef.current.getZoom());
   }, [center]);
 
-  // user marker
-  useEffect(() => {
-    if (!mapRef.current) return;
+  function drawUser() {
+    const L = LRef.current;
+    if (!L || !mapRef.current) return;
     if (userMarkerRef.current) {
       userMarkerRef.current.remove();
       userMarkerRef.current = null;
@@ -91,11 +100,12 @@ export function MapView({
         .addTo(mapRef.current)
         .bindPopup("You are here");
     }
-  }, [userLocation]);
+  }
+  useEffect(drawUser, [userLocation]);
 
-  // POIs
-  useEffect(() => {
-    if (!mapRef.current || !layerRef.current) return;
+  function drawPois() {
+    const L = LRef.current;
+    if (!L || !mapRef.current || !layerRef.current) return;
     layerRef.current.clearLayers();
     (pois ?? []).forEach((p) => {
       const icon = L.divIcon({
@@ -113,11 +123,12 @@ export function MapView({
         </div>`;
       L.marker([p.lat, p.lng], { icon }).addTo(layerRef.current!).bindPopup(popup);
     });
-  }, [pois]);
+  }
+  useEffect(drawPois, [pois]);
 
-  // selected road popup
   useEffect(() => {
-    if (!mapRef.current || !selectedRoad) return;
+    const L = LRef.current;
+    if (!L || !mapRef.current || !selectedRoad) return;
     L.popup()
       .setLatLng([selectedRoad.lat, selectedRoad.lng])
       .setContent(`<strong>${escapeHtml(selectedRoad.name)}</strong>`)
