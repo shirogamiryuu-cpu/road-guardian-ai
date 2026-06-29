@@ -7,6 +7,7 @@ const NAV: { to: string; label: string; end?: boolean }[] = [
   { to: "/sos", label: "RoadSOS" },
   { to: "/legal", label: "DriveLegal" },
   { to: "/watch", label: "RoadWatch" },
+  { to: "/copilot", label: "Co-Pilot" },
   { to: "/about", label: "About" },
 ];
 
