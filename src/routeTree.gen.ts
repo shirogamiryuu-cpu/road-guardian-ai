@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as WatchRouteImport } from './routes/watch'
 import { Route as SosRouteImport } from './routes/sos'
 import { Route as LegalRouteImport } from './routes/legal'
+import { Route as CopilotRouteImport } from './routes/copilot'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
@@ -29,6 +30,11 @@ const SosRoute = SosRouteImport.update({
 const LegalRoute = LegalRouteImport.update({
   id: '/legal',
   path: '/legal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CopilotRoute = CopilotRouteImport.update({
+  id: '/copilot',
+  path: '/copilot',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -50,6 +56,7 @@ const ApiChatRoute = ApiChatRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/copilot': typeof CopilotRoute
   '/legal': typeof LegalRoute
   '/sos': typeof SosRoute
   '/watch': typeof WatchRoute
@@ -58,6 +65,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/copilot': typeof CopilotRoute
   '/legal': typeof LegalRoute
   '/sos': typeof SosRoute
   '/watch': typeof WatchRoute
@@ -67,6 +75,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/copilot': typeof CopilotRoute
   '/legal': typeof LegalRoute
   '/sos': typeof SosRoute
   '/watch': typeof WatchRoute
@@ -74,15 +83,31 @@ export interface FileRoutesById {
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/legal' | '/sos' | '/watch' | '/api/chat'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/copilot'
+    | '/legal'
+    | '/sos'
+    | '/watch'
+    | '/api/chat'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/legal' | '/sos' | '/watch' | '/api/chat'
-  id: '__root__' | '/' | '/about' | '/legal' | '/sos' | '/watch' | '/api/chat'
+  to: '/' | '/about' | '/copilot' | '/legal' | '/sos' | '/watch' | '/api/chat'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/copilot'
+    | '/legal'
+    | '/sos'
+    | '/watch'
+    | '/api/chat'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  CopilotRoute: typeof CopilotRoute
   LegalRoute: typeof LegalRoute
   SosRoute: typeof SosRoute
   WatchRoute: typeof WatchRoute
@@ -112,6 +137,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LegalRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/copilot': {
+      id: '/copilot'
+      path: '/copilot'
+      fullPath: '/copilot'
+      preLoaderRoute: typeof CopilotRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -139,6 +171,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  CopilotRoute: CopilotRoute,
   LegalRoute: LegalRoute,
   SosRoute: SosRoute,
   WatchRoute: WatchRoute,
