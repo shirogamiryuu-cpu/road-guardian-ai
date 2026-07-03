@@ -49,7 +49,7 @@ export function ChatDock() {
             <Sparkles className="h-4 w-4 spark" />
           </div>
           <div>
-            <div className="text-sm font-semibold leading-none">RoadShield AI</div>
+            <div className="text-sm font-semibold leading-none">Lann Pya Kyel</div>
             <div className="text-[10px] text-muted-foreground mt-0.5 font-mono">CO-PILOT · ONLINE</div>
           </div>
         </div>
@@ -117,7 +117,7 @@ export function ChatDock() {
           })
         )}
         {busy && (
-          <div className="text-xs text-muted-foreground font-mono animate-pulse">RoadShield is thinking…</div>
+          <div className="text-xs text-muted-foreground font-mono animate-pulse">Lann Pya Kyel is thinking…</div>
         )}
       </div>
 
@@ -125,7 +125,7 @@ export function ChatDock() {
         <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Ask RoadShield AI…"
+          placeholder="Ask Lann Pya Kyel…"
           autoFocus
           className="flex-1 bg-secondary/40 border border-border rounded-lg px-3 py-2 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary"
         />

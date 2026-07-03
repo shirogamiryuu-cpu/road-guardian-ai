@@ -18,7 +18,7 @@ function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center px-4">
       <div className="max-w-md text-center">
-        <div className="text-[10px] font-mono uppercase tracking-[0.3em] text-primary">RoadShield AI</div>
+        <div className="text-[10px] font-mono uppercase tracking-[0.3em] text-primary">Lann Pya Kyel</div>
         <h1 className="mt-2 text-7xl font-bold">404</h1>
         <h2 className="mt-4 text-xl font-semibold">Off-road</h2>
         <p className="mt-2 text-sm text-muted-foreground">

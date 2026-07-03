@@ -6,13 +6,13 @@ import logo from "@/assets/roadshield-logo.png";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About RoadShield AI · Road Safety Hackathon 2026" },
+      { title: "About Lann Pya Kyel · Road Safety Hackathon 2026" },
       {
         name: "description",
         content:
-          "RoadShield AI unifies emergency response, traffic law, and road accountability for India. Built for the IIT Madras CoERS Road Safety Hackathon 2026.",
+          "Lann Pya Kyel unifies emergency response, traffic law, and road accountability for India. Built for the IIT Madras CoERS Road Safety Hackathon 2026.",
       },
-      { property: "og:title", content: "About RoadShield AI" },
+      { property: "og:title", content: "About Lann Pya Kyel" },
       {
         property: "og:description",
         content: "One AI co-pilot for emergencies, legal questions, and broken roads. Submission for IIT Madras CoERS 2026.",
@@ -27,7 +27,7 @@ function AboutPage() {
     <>
       <section className="mx-auto max-w-4xl px-4 py-12 space-y-12">
         <div>
-          <img src={logo} alt="RoadShield AI" width={64} height={64} className="h-16 w-16" />
+          <img src={logo} alt="Lann Pya Kyel" width={64} height={64} className="h-16 w-16" />
           <div className="mt-4 text-[10px] font-mono uppercase tracking-[0.3em] text-primary">
             Submission · IIT Madras CoERS Road Safety Hackathon 2026
           </div>
@@ -44,7 +44,7 @@ function AboutPage() {
         </Slide>
 
         <Slide n={2} title="The system">
-          <p>RoadShield AI is one chat-driven map that resolves any question to a real action — call, route, draft, file. Built on the AI SDK, Gemini, Leaflet/OSM, and Lovable Cloud.</p>
+          <p>Lann Pya Kyel is one chat-driven map that resolves any question to a real action — call, route, draft, file. Built on the AI SDK, Gemini, Leaflet/OSM, and Lovable Cloud.</p>
           <div className="grid sm:grid-cols-3 gap-3 mt-4">
             <Pill icon={Ambulance} label="RoadSOS" />
             <Pill icon={Scale} label="DriveLegal" />
@@ -88,7 +88,7 @@ function AboutPage() {
         <div className="border-t border-border pt-8 text-center">
           <div className="text-[10px] font-mono uppercase tracking-[0.3em] text-muted-foreground">Thank you</div>
           <p className="mt-2 text-sm text-muted-foreground">
-            Built for <strong>CoERS RBG Labs, IIT Madras · Road Safety Hackathon 2026</strong>.
+            Built for <strong>Lann Pya Kyel · IIT Madras CoERS · Road Safety Hackathon 2026</strong>.
           </p>
         </div>
       </section>
