@@ -18,7 +18,7 @@ function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center px-4">
       <div className="max-w-md text-center">
-        <div className="text-[10px] font-mono uppercase tracking-[0.3em] text-primary">RoadShield AI</div>
+        <div className="text-[10px] font-mono uppercase tracking-[0.3em] text-primary">Lann Pya Kyel</div>
         <h1 className="mt-2 text-7xl font-bold">404</h1>
         <h2 className="mt-4 text-xl font-semibold">Off-road</h2>
         <p className="mt-2 text-sm text-muted-foreground">
@@ -73,14 +73,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover" },
       { name: "theme-color", content: "#0B1220" },
-      { title: "RoadShield AI · Road Safety Command Center" },
+      { title: "Lann Pya Kyel · Road Safety Co-pilot" },
       {
         name: "description",
         content:
-          "RoadShield AI is an AI-powered road safety co-pilot for India — emergency SOS, traffic law chat, and road transparency, on one map.",
+          "Lann Pya Kyel is an AI-powered road safety co-pilot for India — emergency SOS, traffic law chat, and road transparency, on one map.",
       },
-      { name: "author", content: "RoadShield AI" },
-      { property: "og:title", content: "RoadShield AI · Road Safety Command Center" },
+      { name: "author", content: "Lann Pya Kyel" },
+      { property: "og:title", content: "Lann Pya Kyel · Road Safety Co-pilot" },
       {
         property: "og:description",
         content:

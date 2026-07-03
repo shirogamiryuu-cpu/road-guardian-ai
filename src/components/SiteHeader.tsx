@@ -17,11 +17,11 @@ export function SiteHeader() {
     <header className="sticky top-0 z-[900] border-b border-border bg-background/80 backdrop-blur-xl">
       <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4">
         <Link to="/" className="flex items-center gap-2.5">
-          <img src={logo} alt="RoadShield AI logo" width={28} height={28} className="h-7 w-7" />
+          <img src={logo} alt="Lann Pya Kyel logo" width={28} height={28} className="h-7 w-7" />
           <div className="leading-none">
-            <div className="text-sm font-bold tracking-tight">RoadShield AI</div>
+            <div className="text-sm font-bold tracking-tight">Lann Pya Kyel</div>
             <div className="text-[9px] font-mono uppercase tracking-[0.2em] text-muted-foreground mt-0.5">
-              Road Safety Command
+              Road Safety Co-pilot
             </div>
           </div>
         </Link>

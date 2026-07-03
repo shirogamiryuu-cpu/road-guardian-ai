@@ -7,11 +7,11 @@ import { ArrowRight, Ambulance, Scale, Building2 } from "lucide-react";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "RoadShield AI · India's AI Road Safety Co-pilot" },
+      { title: "Lann Pya Kyel · India's AI Road Safety Co-pilot" },
       {
         name: "description",
         content:
-          "One map, three lifelines: instant emergency SOS, traffic law chat, and road transparency. Built for India by RoadShield AI.",
+          "One map, three lifelines: instant emergency SOS, traffic law chat, and road transparency. Built for India by Lann Pya Kyel.",
       },
     ],
   }),
@@ -24,7 +24,7 @@ function Home() {
       <section className="mx-auto max-w-7xl px-4 pt-8 pb-4">
         <div className="flex items-center gap-2 mb-3">
           <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-primary">
-            ◆ Road Safety Hackathon 2026 · IIT Madras CoERS
+            ◆ Lann Pya Kyel · Road Safety Hackathon 2026 · IIT Madras CoERS
           </span>
         </div>
         <h1 className="text-3xl md:text-5xl font-bold tracking-tight max-w-3xl leading-[1.05]">
