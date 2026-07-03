@@ -83,7 +83,7 @@ export function WatchPanel() {
     }
     toast.success("Complaint logged. Opening email draft…");
     const body = encodeURIComponent(
-      `To: ${selected.authority.authority}\n\nI wish to report an issue on ${selected.name} (${selected.authority.name}).\n\nLocation: https://www.openstreetmap.org/?mlat=${selected.lat}&mlon=${selected.lng}#map=18/${selected.lat}/${selected.lng}\n\nIssue:\n${issue.trim()}\n\nFiled via RoadShield AI.`
+      `To: ${selected.authority.authority}\n\nI wish to report an issue on ${selected.name} (${selected.authority.name}).\n\nLocation: https://www.openstreetmap.org/?mlat=${selected.lat}&mlon=${selected.lng}#map=18/${selected.lat}/${selected.lng}\n\nIssue:\n${issue.trim()}\n\nFiled via Lann Pya Kyel.`
     );
     window.location.href = `mailto:${selected.authority.email}?subject=${encodeURIComponent("Road issue report: " + selected.name)}&body=${body}`;
     setIssue("");

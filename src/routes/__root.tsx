@@ -73,14 +73,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover" },
       { name: "theme-color", content: "#0B1220" },
-      { title: "RoadShield AI · Road Safety Command Center" },
+      { title: "Lann Pya Kyel · Road Safety Co-pilot" },
       {
         name: "description",
         content:
-          "RoadShield AI is an AI-powered road safety co-pilot for India — emergency SOS, traffic law chat, and road transparency, on one map.",
+          "Lann Pya Kyel is an AI-powered road safety co-pilot for India — emergency SOS, traffic law chat, and road transparency, on one map.",
       },
-      { name: "author", content: "RoadShield AI" },
-      { property: "og:title", content: "RoadShield AI · Road Safety Command Center" },
+      { name: "author", content: "Lann Pya Kyel" },
+      { property: "og:title", content: "Lann Pya Kyel · Road Safety Co-pilot" },
       {
         property: "og:description",
         content:

@@ -5,7 +5,7 @@ import { ChatDock } from "@/components/ChatDock";
 export const Route = createFileRoute("/sos")({
   head: () => ({
     meta: [
-      { title: "RoadSOS · Emergency Map · RoadShield AI" },
+      { title: "RoadSOS · Emergency Map · Lann Pya Kyel" },
       {
         name: "description",
         content:

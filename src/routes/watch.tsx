@@ -5,7 +5,7 @@ import { ChatDock } from "@/components/ChatDock";
 export const Route = createFileRoute("/watch")({
   head: () => ({
     meta: [
-      { title: "RoadWatch · Road Transparency & Complaint Router · RoadShield AI" },
+      { title: "RoadWatch · Road Transparency & Complaint Router · Lann Pya Kyel" },
       {
         name: "description",
         content:

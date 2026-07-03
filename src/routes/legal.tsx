@@ -6,7 +6,7 @@ import { VIOLATIONS } from "@/lib/india-laws";
 export const Route = createFileRoute("/legal")({
   head: () => ({
     meta: [
-      { title: "DriveLegal · MV Act Fines & Challan Calculator · RoadShield AI" },
+      { title: "DriveLegal · MV Act Fines & Challan Calculator · Lann Pya Kyel" },
       {
         name: "description",
         content:
